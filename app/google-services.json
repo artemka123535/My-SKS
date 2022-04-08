@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "606638118993",
+    "firebase_url": "https://my-sks-f2dd4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "my-sks-f2dd4",
+    "storage_bucket": "my-sks-f2dd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606638118993:android:33c97095ec9bc6acbfc070",
+        "android_client_info": {
+          "package_name": "com.goodcompany.loginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606638118993-b5h3lg6s89hrsdje24qj8m3qkg8lj33u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxFvMz-Soy0vsa0Lpq_q5fwQyjHSJSFsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606638118993-b5h3lg6s89hrsdje24qj8m3qkg8lj33u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
