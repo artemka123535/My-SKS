@@ -55,7 +55,7 @@ public class fragment_register extends Fragment {
                 String mdtsurname = surname.getText().toString();
                 String mdtemail = email.getText().toString();
                 String mdtpassword = password.getText().toString();
-                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null);
+                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null, null, "0");
                 int j = 0;
                 int k = 0;
                 for (int i = 0; i < mdtpassword.length(); i++){

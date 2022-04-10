@@ -25,7 +25,7 @@ import java.util.Map;
 public class PersonalActivity extends AppCompatActivity {
     private EditText surname;
     private EditText name;
-    private  EditText patronymic;
+    private EditText patronymic;
     private EditText sex;
     private EditText birth;
     private List<String> NameList;
