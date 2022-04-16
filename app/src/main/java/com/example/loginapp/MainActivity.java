@@ -1,6 +1,7 @@
 package com.example.loginapp;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,33 +15,66 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mauth;
     private FirebaseUser currentUser;
+    private DatabaseReference mdt;
+    private int pin1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mdt = FirebaseDatabase.getInstance().getReference();
         mauth = FirebaseAuth.getInstance();
         currentUser = mauth.getCurrentUser();
-        if (currentUser==null){
-            ViewPager viewPager = findViewById(R.id.viewPager);
+        if (currentUser == null) {
+                ViewPager viewPager = findViewById(R.id.viewPager);
 
-            AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
-            pagerAdapter.addFragmet(new fragment_login());
-            pagerAdapter.addFragmet(new fragment_register());
-            viewPager.setAdapter(pagerAdapter);
+                AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
+                pagerAdapter.addFragmet(new fragment_login());
+                pagerAdapter.addFragmet(new fragment_register());
+                viewPager.setAdapter(pagerAdapter);
+        } else if (currentUser != null) {
+            String email = currentUser.getEmail();
+            mdt.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot ds: snapshot.getChildren()) {
+                        User user1 = ds.getValue(User.class);
+                        assert user1 != null;
+                        String email1 = user1.email;
+                        if (email1.equals(email)) {
+                            pin1 = user1.pin;
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            if (pin1 == 1){
+                Intent i;
+                i = new Intent(MainActivity.this, PinLockActivity.class);
+                startActivity(i);
+            }else{
+                ViewPager viewPager = findViewById(R.id.viewPager);
+
+                AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
+                pagerAdapter.addFragmet(new fragment_login());
+                pagerAdapter.addFragmet(new fragment_register());
+                viewPager.setAdapter(pagerAdapter);
         }
-        else if(currentUser!= null){
-            Intent i;
-            i = new Intent(MainActivity.this,MenuActivity.class);
-            startActivity(i);
         }
     }
 

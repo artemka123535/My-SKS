@@ -54,9 +54,8 @@ public class fragment_login extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(getActivity().getApplicationContext(), "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
                                 Intent i;
-                                i = new Intent(getActivity(),MenuActivity.class);
+                                i = new Intent(getActivity(),PinLockActivity.class);
                                 startActivity(i);
                             }else {
                                 Toast.makeText(getActivity().getApplicationContext(), "Вы неправильно ввели данные", Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.example.loginapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -55,7 +56,7 @@ public class fragment_register extends Fragment {
                 String mdtsurname = surname.getText().toString();
                 String mdtemail = email.getText().toString();
                 String mdtpassword = password.getText().toString();
-                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null, null, "0");
+                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null, null, "0", null, 0);
                 int j = 0;
                 int k = 0;
                 for (int i = 0; i < mdtpassword.length(); i++){
@@ -83,6 +84,9 @@ public class fragment_register extends Fragment {
                             if(task.isSuccessful()){
                                 mdt.push().setValue(newUser);
                                 Toast.makeText(getActivity().getApplicationContext(), "Вы зарегестрированы", Toast.LENGTH_SHORT).show();
+                                Intent i;
+                                i = new Intent(getActivity(),PinLockActivity.class);
+                                startActivity(i);
                             }else {
                                 Toast.makeText(getActivity().getApplicationContext(), "У вас не получилось зарегестрироваться", Toast.LENGTH_SHORT).show();
                             }

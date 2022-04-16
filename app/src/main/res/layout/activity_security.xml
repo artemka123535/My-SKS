@@ -17,32 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/switch_code"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:background="@drawable/my_button_bg"
-        android:gravity="left|center_vertical"
-        android:text="   Использовать код-пароль"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/code" />
-
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/my_button_bg"
+        android:drawableRight="@drawable/strelka"
         android:gravity="left|center_vertical"
         android:text="   Изменить код-пароль"
-        android:drawableRight="@drawable/strelka"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_code" />
+        app:layout_constraintTop_toBottomOf="@+id/code" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
