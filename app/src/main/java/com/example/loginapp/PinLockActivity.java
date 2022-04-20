@@ -3,7 +3,9 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,10 +34,14 @@ public class PinLockActivity extends AppCompatActivity {
     private TextView codetext;
     private String newcode= "";
     private int count = 0;
+    private SharedPreferences pin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pin_lock);
+        pin = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pin.edit();
+
         mauth = FirebaseAuth.getInstance();
         mdt = FirebaseDatabase.getInstance().getReference();
         String email = mauth.getCurrentUser().getEmail();
@@ -78,6 +84,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -107,6 +115,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -128,6 +138,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -159,6 +171,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -181,6 +195,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -210,6 +226,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -232,6 +250,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -261,6 +281,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -283,6 +305,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -312,6 +336,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -334,6 +360,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -364,6 +392,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -386,6 +416,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -415,6 +447,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -437,6 +471,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -466,6 +502,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -488,6 +526,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -517,6 +557,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -539,7 +581,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
-
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -569,6 +612,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 if(code1.equals(newcode)){
                                     Toast.makeText(PinLockActivity.this, "Добро пожаловать!!!", Toast.LENGTH_SHORT).show();
+                                    editor.putString("PinStatus", "1");
+                                    editor.apply();
                                     Intent i;
                                     i = new Intent(PinLockActivity.this,MenuActivity.class);
                                     startActivity(i);
@@ -626,7 +671,6 @@ public class PinLockActivity extends AppCompatActivity {
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
                                     updates.put("codeexist", "1");
-                                updates.put("pin", 1);
                                     dbr.updateChildren(updates);
                                     Toast.makeText(PinLockActivity.this, "Код пароль создан", Toast.LENGTH_SHORT).show();
                                 Intent i;
@@ -651,7 +695,6 @@ public class PinLockActivity extends AppCompatActivity {
                                 Map<String, Object> updates = new HashMap<>();
                                 updates.put("code", newcode);
                                 updates.put("codeexist", "1");
-                                updates.put("pin", "1");
                                 dbr.updateChildren(updates);
                                 Toast.makeText(PinLockActivity.this, "Код пароль создан", Toast.LENGTH_SHORT).show();
                                 Intent i;

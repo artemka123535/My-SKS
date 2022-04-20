@@ -3,6 +3,9 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,8 +27,9 @@ public class AddSchetActivity extends AppCompatActivity {
     private DatabaseReference mdt;
     private FirebaseAuth mauth;
     private String id1;
+    private String schet1;
     private EditText schet;
-    private EditText status;
+    private SharedPreferences sbschet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,8 @@ public class AddSchetActivity extends AppCompatActivity {
         String email = mauth.getCurrentUser().getEmail();
         schet = findViewById(R.id.schet);
         Button saveschet = findViewById(R.id.saveschet);
+        sbschet = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sbschet.edit();
         mdt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -46,6 +52,7 @@ public class AddSchetActivity extends AppCompatActivity {
                     String email1 = user1.email;
                     if (email1.equals(email)) {
                         id1 = ds.getKey();
+                        schet1 = user1.schet;
                     }
                 }
             }
@@ -58,11 +65,29 @@ public class AddSchetActivity extends AppCompatActivity {
         saveschet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final DatabaseReference dbr = mdt.child(id1);
-                Map<String, Object> updates = new HashMap<>();
-                updates.put("schet", schet.getText().toString());
-                dbr.updateChildren(updates);
-                Toast.makeText(AddSchetActivity.this, "Лицевой счёт добавлен", Toast.LENGTH_SHORT).show();
+                if(schet1.isEmpty()) {
+                    final DatabaseReference dbr = mdt.child(id1);
+                    Map<String, Object> updates = new HashMap<>();
+                    updates.put("schet", schet.getText().toString());
+                    dbr.updateChildren(updates);
+                    editor.putString("SchetStatus", "1");
+                    editor.apply();
+                    Toast.makeText(AddSchetActivity.this, "Лицевой счёт добавлен", Toast.LENGTH_SHORT).show();
+                    Intent i;
+                    i = new Intent(AddSchetActivity.this, MenuActivity.class);
+                    startActivity(i);
+                }else{
+                    final DatabaseReference dbr = mdt.child(id1);
+                    Map<String, Object> updates = new HashMap<>();
+                    updates.put("schet1", schet.getText().toString());
+                    dbr.updateChildren(updates);
+                    editor.putString("SchetStatus", "1");
+                    editor.apply();
+                    Toast.makeText(AddSchetActivity.this, "Лицевой счёт добавлен", Toast.LENGTH_SHORT).show();
+                    Intent i;
+                    i = new Intent(AddSchetActivity.this, MenuActivity.class);
+                    startActivity(i);
+                }
             }
         });
 

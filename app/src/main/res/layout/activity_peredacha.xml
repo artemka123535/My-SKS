@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PeredachaActivity">
+
+    <EditText
+        android:id="@+id/pokaz"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/my_button_bg"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="   Показания счётчика холодной воды"
+        android:inputType="number"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pokaz1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/my_button_bg"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="   Показания счётчика горячей воды"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokaz" />
+
+    <Button
+        android:id="@+id/savepokaz"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/btn_custom"
+        android:fontFamily="@font/font2"
+        android:text="Передать показания"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokaz1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

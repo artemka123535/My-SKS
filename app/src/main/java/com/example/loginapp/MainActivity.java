@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mauth;
     private FirebaseUser currentUser;
     private DatabaseReference mdt;
-    private int pin1;
+    private SharedPreferences pin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mdt = FirebaseDatabase.getInstance().getReference();
         mauth = FirebaseAuth.getInstance();
         currentUser = mauth.getCurrentUser();
+        pin = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
         if (currentUser == null) {
                 ViewPager viewPager = findViewById(R.id.viewPager);
 
@@ -44,37 +47,20 @@ public class MainActivity extends AppCompatActivity {
                 pagerAdapter.addFragmet(new fragment_register());
                 viewPager.setAdapter(pagerAdapter);
         } else if (currentUser != null) {
-            String email = currentUser.getEmail();
-            mdt.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot ds: snapshot.getChildren()) {
-                        User user1 = ds.getValue(User.class);
-                        assert user1 != null;
-                        String email1 = user1.email;
-                        if (email1.equals(email)) {
-                            pin1 = user1.pin;
-                        }
-                    }
-                }
+            if(pin.contains("PinStatus")) {
+                if(pin.getString("PinStatus","").equals("1")) {
+                    Intent i;
+                    i = new Intent(MainActivity.this, PinLockActivity.class);
+                    startActivity(i);
+                }else{
+                    ViewPager viewPager = findViewById(R.id.viewPager);
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-            if (pin1 == 1){
-                Intent i;
-                i = new Intent(MainActivity.this, PinLockActivity.class);
-                startActivity(i);
-            }else{
-                ViewPager viewPager = findViewById(R.id.viewPager);
-
-                AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
-                pagerAdapter.addFragmet(new fragment_login());
-                pagerAdapter.addFragmet(new fragment_register());
-                viewPager.setAdapter(pagerAdapter);
-        }
+                    AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
+                    pagerAdapter.addFragmet(new fragment_login());
+                    pagerAdapter.addFragmet(new fragment_register());
+                    viewPager.setAdapter(pagerAdapter);
+            }
+            }
         }
     }
 
