@@ -48,6 +48,7 @@ public class ChangeActivity extends AppCompatActivity {
         savepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (currentUser.isEmailVerified()) {
                 mdt.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,8 +70,8 @@ public class ChangeActivity extends AppCompatActivity {
                 String oldpass = p1.getText().toString();
                 String newpass = p2.getText().toString();
                 String secnewpass = p3.getText().toString();
-                if (oldpass == pass){
-                    if(newpass == secnewpass){
+                if (oldpass.equals(pass)){
+                    if(newpass.equals(secnewpass)){
                         final DatabaseReference dbr = mdt.child(id1);
                         Map<String, Object> updates = new HashMap<>();
                         updates.put("password", newpass);
@@ -82,6 +83,9 @@ public class ChangeActivity extends AppCompatActivity {
                     }
                 }else{
                     Toast.makeText(ChangeActivity.this, "Текущий пароль не верен", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                    Toast.makeText(ChangeActivity.this, "Чтобы изменить пароль, нужно верефецироваться", Toast.LENGTH_SHORT).show();
                 }
             }
         });

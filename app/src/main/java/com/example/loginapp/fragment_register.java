@@ -56,7 +56,7 @@ public class fragment_register extends Fragment {
                 String mdtsurname = surname.getText().toString();
                 String mdtemail = email.getText().toString();
                 String mdtpassword = password.getText().toString();
-                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null, null, "0", null, null, null, 0, null, 0, 0, 0);
+                User newUser = new User(id, mdtname, mdtsurname, mdtemail,mdtpassword, null,null,null, null, "0", null, null, null, 0, null, 0, 0, 0, 0);
                 int j = 0;
                 int k = 0;
                 for (int i = 0; i < mdtpassword.length(); i++){
@@ -77,7 +77,7 @@ public class fragment_register extends Fragment {
                     onlyNumbers = true;
                 }
 
-                if (!TextUtils.isEmpty(mdtname) && !TextUtils.isEmpty(mdtemail) && !TextUtils.isEmpty(mdtpassword) && !TextUtils.isEmpty(mdtname) && !TextUtils.isEmpty(mdtsurname) && mdtpassword.equals(secondpassword.getText().toString()) && mdtpassword.length()>=8 && onlyLatinAlphabet && onlyNumbers) {
+                if (!TextUtils.isEmpty(mdtname) && !TextUtils.isEmpty(mdtemail) && !TextUtils.isEmpty(mdtpassword) && !TextUtils.isEmpty(mdtname) && !TextUtils.isEmpty(mdtsurname) && !secondpassword.getText().toString().isEmpty() && mdtpassword.equals(secondpassword.getText().toString()) && mdtpassword.length()>=8 && onlyLatinAlphabet && onlyNumbers) {
                     mauth.createUserWithEmailAndPassword(mdtemail, mdtpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

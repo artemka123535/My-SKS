@@ -3,14 +3,14 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,26 +23,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddSchetActivity extends AppCompatActivity {
+
+public class Uspeh extends AppCompatActivity {
+    private EditText cardNumber;
+    private EditText cardDate;
+    private EditText cardCVV;
+    private int times = 1;
     private DatabaseReference mdt;
     private FirebaseAuth mauth;
     private String id1;
-    private String schet1;
-    private EditText schet;
-    private SharedPreferences sbschet;
+    private TextView itogo;
+    private TextView itog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_schet);
-        getSupportActionBar().setTitle("Добавление лицевого счёта");
+        setContentView(R.layout.activity_uspeh);
+        getSupportActionBar().setTitle("Оплата");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mauth = FirebaseAuth.getInstance();
         mdt = FirebaseDatabase.getInstance().getReference();
         String email = mauth.getCurrentUser().getEmail();
-        schet = findViewById(R.id.schet);
-        Button saveschet = findViewById(R.id.saveschet);
-        sbschet = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sbschet.edit();
+        itogo = findViewById(R.id.itogo);
         mdt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -52,7 +55,7 @@ public class AddSchetActivity extends AppCompatActivity {
                     String email1 = user1.email;
                     if (email1.equals(email)) {
                         id1 = ds.getKey();
-                        schet1 = user1.schet;
+                        itogo.setText(String.valueOf(user1.cash)+ " руб.");
                     }
                 }
             }
@@ -62,34 +65,42 @@ public class AddSchetActivity extends AppCompatActivity {
 
             }
         });
-        saveschet.setOnClickListener(new View.OnClickListener() {
+        cardNumber = findViewById(R.id.cardNumber);
+        cardDate = findViewById(R.id.cardDate);
+        cardCVV = findViewById(R.id.cardCVV);
+        itog = findViewById(R.id.itog);
+        Button oplata = findViewById(R.id.button10);
+        ImageView ok = findViewById(R.id.ok);
+        TextView uspeh = findViewById(R.id.uspeh);
+        oplata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(schet1 == null) {
+                if (!cardCVV.getText().toString().isEmpty() && !cardDate.getText().toString().isEmpty() && !cardNumber.getText().toString().isEmpty() && times == 1 && cardDate.getText().toString().length() == 5 && cardNumber.getText().toString().length() == 19 && cardCVV.getText().toString().length() == 3){
+                    oplata.setText("Продолжить");
+                    cardNumber.setVisibility(View.INVISIBLE);
+                    cardDate.setVisibility(View.INVISIBLE);
+                    cardCVV.setVisibility(View.INVISIBLE);
+                    itogo.setVisibility(View.INVISIBLE);
+                    itog.setVisibility(View.INVISIBLE);
+                    ok.setVisibility(View.VISIBLE);
+                    uspeh.setVisibility(View.VISIBLE);
+                    times = 2;
                     final DatabaseReference dbr = mdt.child(id1);
                     Map<String, Object> updates = new HashMap<>();
-                    updates.put("schet", schet.getText().toString());
+                    updates.put("cash", 0);
                     dbr.updateChildren(updates);
-                    editor.putString("SchetStatus", "1");
-                    editor.apply();
-                    Toast.makeText(AddSchetActivity.this, "Лицевой счёт добавлен", Toast.LENGTH_SHORT).show();
+                }else if(times==2) {
                     Intent i;
-                    i = new Intent(AddSchetActivity.this, MenuActivity.class);
+                    i = new Intent(Uspeh.this, MenuActivity.class);
                     startActivity(i);
-                }else{
-                    final DatabaseReference dbr = mdt.child(id1);
-                    Map<String, Object> updates = new HashMap<>();
-                    updates.put("schet1", schet.getText().toString());
-                    dbr.updateChildren(updates);
-                    editor.putString("SchetStatus1", "1");
-                    editor.apply();
-                    Toast.makeText(AddSchetActivity.this, "Лицевой счёт добавлен", Toast.LENGTH_SHORT).show();
-                    Intent i;
-                    i = new Intent(AddSchetActivity.this, MenuActivity.class);
-                    startActivity(i);
+                }else if(cardDate.getText().toString().length() != 5 || cardNumber.getText().toString().length() != 19 || cardCVV.getText().toString().length() != 3){
+                    Toast.makeText(Uspeh.this, "Данные введены неправльно", Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(Uspeh.this, "Не все поля заполнены", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
     }
     @Override

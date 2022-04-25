@@ -3,6 +3,7 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,14 @@ public class VerificationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 user.sendEmailVerification();
                 Toast.makeText(VerificationActivity.this, "Письмо отправлено на ваш email", Toast.LENGTH_SHORT).show();
+            }
+        });
+        emailbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i;
+                i = new Intent(VerificationActivity.this,ChangeEmailActivity.class);
+                startActivity(i);
             }
         });
     }

@@ -32,6 +32,7 @@ public class PeredachaActivity extends AppCompatActivity {
     private SharedPreferences sbpokaz;
     private int GVS;
     private float cash;
+    private float pokazschet;
     private float cash1;
 
     @Override
@@ -59,7 +60,8 @@ public class PeredachaActivity extends AppCompatActivity {
                         id1 = ds.getKey();
                         GVS = user1.GVS;
                         cash = user1.cash;
-                        cash1 = user1.cash1;;
+                        cash1 = user1.cash1;
+                        pokazschet = user1.pokaz;
                         if(GVS!=0){
                             pokaz1.setVisibility(View.VISIBLE);
                         }
@@ -78,16 +80,19 @@ public class PeredachaActivity extends AppCompatActivity {
                 if(sbpokaz.getString("AddressStatus","").equals("1")) {
                     final DatabaseReference dbr = mdt.child(id1);
                     Map<String, Object> updates = new HashMap<>();
+
                     if(GVS!=0){
-                        updates.put("cash", (cash+ Float.parseFloat(pokaz.getText().toString())*47.26 + (Float.parseFloat(pokaz.getText().toString())+Float.parseFloat(pokaz1.getText().toString())) * 44.47));
+                        updates.put("cash", (cash +(Float.parseFloat(pokaz.getText().toString()) - pokazschet)*47.26 + (Float.parseFloat(pokaz.getText().toString()) - pokazschet + Float.parseFloat(pokaz1.getText().toString())) * 44.47));
                         dbr.updateChildren(updates);
                     }else {
-                        updates.put("cash", (cash+ Float.parseFloat(pokaz.getText().toString()) * 47.26 + Float.parseFloat(pokaz.getText().toString()) * 44.47));
+                        updates.put("cash", (cash+ (Float.parseFloat(pokaz.getText().toString()) - pokazschet) * 47.26 + (Float.parseFloat(pokaz.getText().toString()) - pokazschet) * 44.47));
                         dbr.updateChildren(updates);
                     }
                     editor.putString("PokazStatus", "1");
                     editor.apply();
-                    Toast.makeText(PeredachaActivity.this, "Показания счётчика добавлен", Toast.LENGTH_SHORT).show();
+                    updates.put("pokaz", (Float.parseFloat(pokaz.getText().toString())));
+                    dbr.updateChildren(updates);
+                    Toast.makeText(PeredachaActivity.this, "Показания счётчика добавлены", Toast.LENGTH_SHORT).show();
                     Intent i;
                     i = new Intent(PeredachaActivity.this, MenuActivity.class);
                     startActivity(i);
@@ -103,7 +108,7 @@ public class PeredachaActivity extends AppCompatActivity {
                     }
                     editor.putString("PokazStatus1", "1");
                     editor.apply();
-                    Toast.makeText(PeredachaActivity.this, "Показания счётчика добавлен", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PeredachaActivity.this, "Показания счётчика добавлены", Toast.LENGTH_SHORT).show();
                     Intent i;
                     i = new Intent(PeredachaActivity.this, MenuActivity.class);
                     startActivity(i);

@@ -41,7 +41,6 @@ public class PinLockActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pin_lock);
         pin = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pin.edit();
-
         mauth = FirebaseAuth.getInstance();
         mdt = FirebaseDatabase.getInstance().getReference();
         String email = mauth.getCurrentUser().getEmail();
@@ -667,6 +666,8 @@ public class PinLockActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             if(newcode.length()==4) {
+                                editor.putString("PinStatus", "0");
+                                editor.apply();
                                 final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -691,6 +692,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                             if(newcode.length()==4) {
+                                editor.putString("PinStatus", "0");
+                                editor.apply();
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
                                 updates.put("code", newcode);
@@ -707,6 +710,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -731,6 +736,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -747,6 +754,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -771,6 +780,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -788,6 +799,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -812,6 +825,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -829,6 +844,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -853,6 +870,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -870,6 +889,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -894,6 +915,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -911,6 +934,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -935,6 +960,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -952,6 +979,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -976,6 +1005,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -993,6 +1024,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -1017,6 +1050,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -1034,6 +1069,8 @@ public class PinLockActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -1058,6 +1095,8 @@ public class PinLockActivity extends AppCompatActivity {
                                     }
                                 }
                                 if(newcode.length()==4) {
+                                    editor.putString("PinStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);

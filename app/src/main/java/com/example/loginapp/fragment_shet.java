@@ -20,16 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.BillingClientStateListener;
-import com.android.billingclient.api.BillingFlowParams;
-import com.android.billingclient.api.BillingResult;
-import com.android.billingclient.api.ConsumeParams;
-import com.android.billingclient.api.ConsumeResponseListener;
-import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchasesUpdatedListener;
-import com.android.billingclient.api.SkuDetails;
-import com.android.billingclient.api.SkuDetailsParams;
-import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,13 +51,13 @@ public class fragment_shet extends Fragment {
     private ImageButton peredacha;
     private SharedPreferences sbpokaz;
     private String id1;
-    private  int GVS;
+    private int GVS;
     private int people;
     private int times = 0;
+
     public fragment_shet() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -94,21 +84,6 @@ public class fragment_shet extends Fragment {
         editor.apply();
         String email = mauth.getCurrentUser().getEmail();
         int date1 = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        billingClient = BillingClient.newBuilder(getActivity())
-                .enablePendingPurchases()
-                .setListener(
-                        new PurchasesUpdatedListener() {
-                            @Override
-                            public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
-                                if(billingResult.getResponseCode()==BillingClient.BillingResponseCode.OK && list !=null) {
-                                    for (Purchase purchase: list){
-                                        verifySubPurchase(purchase);
-                                    }
-                                }
-                            }
-                        }
-                ).build();
-        establishConnection();
         mdt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -120,56 +95,57 @@ public class fragment_shet extends Fragment {
                         id1 = ds.getKey();
                         cash = user1.cash;
                         cash1 = user1.cash1;
-                        if(date1 == 1 && times == 0){
-                            if(!sbpokaz.contains("PokazStatus")){
+                        people = user1.people;
+                        if (date1 == 1 && times == 0) {
+                            if (!sbpokaz.contains("PokazStatus")) {
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
-                                if(GVS!=0){
-                                    updates.put("cash", (cash + 5.7 *47.26 * people *  + 8.4 * 44.47 * people));
+                                if (GVS != 0) {
+                                    updates.put("cash", (cash + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
 
-                                }else {
-                                    updates.put("cash", (cash + 5.7 * 47.26 + 5.7* 44.47));
+                                } else {
+                                    updates.put("cash", (cash + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
                                 }
-                            }else if(sbpokaz.getString("PokazStatus", "").equals("0")){
+                            } else if (sbpokaz.getString("PokazStatus", "").equals("0")) {
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
-                                if(GVS!=0){
-                                    updates.put("cash", (cash + 5.7 *47.26 * people *  + 8.4 * 44.47 * people));
+                                if (GVS != 0) {
+                                    updates.put("cash", (cash + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
 
-                                }else {
-                                    updates.put("cash", (cash + 5.7 * 47.26*people + 5.7* 44.47*people));
+                                } else {
+                                    updates.put("cash", (cash + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
                                 }
-                            }else if(!sbpokaz.contains("PokazStatus1")){
+                            } else if (!sbpokaz.contains("PokazStatus1")) {
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
-                                if(GVS!=0){
-                                    updates.put("cash1", (cash1 +5.7 *47.26 * people *  + 8.4 * 44.47 * people));
+                                if (GVS != 0) {
+                                    updates.put("cash1", (cash1 + 5.7 * 47.26 * people +5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
 
-                                }else {
-                                    updates.put("cash1", (cash1 + 5.7 * 47.26 + 5.7* 44.47));
+                                } else {
+                                    updates.put("cash1", (cash1 + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
                                 }
-                            }else if(sbpokaz.getString("PokazStatus1", "").equals("0")){
+                            } else if (sbpokaz.getString("PokazStatus1", "").equals("0")) {
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
-                                if(GVS!=0){
-                                    updates.put("cash1", (cash1 +5.7 *47.26 * people *  + 8.4 * 44.47 * people));
+                                if (GVS != 0) {
+                                    updates.put("cash1", (cash1 + 5.7 * 47.26 * people  +5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
 
-                                }else {
-                                    updates.put("cash1", (cash1 + 5.7 * 47.26* people + 5.7* 44.47*people));
+                                } else {
+                                    updates.put("cash1", (cash1 + 5.7 * 47.26 * people + 5.7 * 44.47 * people));
                                     dbr.updateChildren(updates);
                                     times = 1;
                                 }
@@ -179,12 +155,11 @@ public class fragment_shet extends Fragment {
                         address1 = user1.address1;
                         schet1 = user1.schet1;
                         GVS = user1.GVS;
-                        people = user1.people;
                         cash = user1.cash;
                         cash1 = user1.cash1;
                         adres1.setText(address);
-                        money.setText(String.valueOf(cash)+" руб.");
-                        if(!schet1.isEmpty()) {
+                        money.setText(String.valueOf(cash) + " руб.");
+                        if (sbpokaz.contains("SchetStatus1")) {
                             adres2.setVisibility(View.VISIBLE);
                             if (adres2.getVisibility() == View.VISIBLE) {
                                 adres2.setText(address1);
@@ -200,7 +175,7 @@ public class fragment_shet extends Fragment {
 
             }
         });
-        if(date1 == 20){
+        if (date1 == 20) {
             editor.putString("PokazStatus", "0");
             editor.apply();
             editor.putString("PokazStatus1", "0");
@@ -209,7 +184,7 @@ public class fragment_shet extends Fragment {
         addAdres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!schet1.isEmpty()) {
+                if (!sbpokaz.contains("SchetStatus1")) {
                     Intent i;
                     i = new Intent(getActivity(), AddSchetActivity.class);
                     startActivity(i);
@@ -223,7 +198,7 @@ public class fragment_shet extends Fragment {
                 editor.apply();
                 adres1.setBackgroundColor(getResources().getColor(R.color.grey));
                 adres2.setBackgroundColor(getResources().getColor(R.color.white));
-                money.setText(String.valueOf(cash1)+" руб.");
+                money.setText(String.valueOf(cash1) + " руб.");
             }
         });
         adres1.setOnClickListener(new View.OnClickListener() {
@@ -233,43 +208,43 @@ public class fragment_shet extends Fragment {
                 editor.apply();
                 adres2.setBackgroundColor(getResources().getColor(R.color.grey));
                 adres1.setBackgroundColor(getResources().getColor(R.color.white));
-                money.setText(String.valueOf(cash)+" руб.");
+                money.setText(String.valueOf(cash) + " руб.");
             }
         });
-        if(25>=date1 && date1>=20) {
+        if (25 >= date1 && date1 >= 20) {
             peredacha.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash)+" руб.")){
+                    if (!sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash) + " руб.")) {
                         Intent i;
                         i = new Intent(getActivity(), PeredachaActivity.class);
                         startActivity(i);
-                    }else if(sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash)+" руб.")){
-                        if(sbpokaz.getString("PokazStatus", "").equals("0")){
+                    } else if (sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash) + " руб.")) {
+                        if (sbpokaz.getString("PokazStatus", "").equals("0")) {
                             Intent i;
                             i = new Intent(getActivity(), PeredachaActivity.class);
                             startActivity(i);
-                        }else{
+                        } else {
                             Toast.makeText(getActivity(), "Показания счётчика уже добавлены", Toast.LENGTH_SHORT).show();
                         }
-                    }else if(!sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1)+" руб.")){
+                    } else if (!sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1) + " руб.")) {
                         Intent i;
                         i = new Intent(getActivity(), PeredachaActivity.class);
                         startActivity(i);
-                    }else if(sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1)+" руб.")) {
+                    } else if (sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1) + " руб.")) {
                         if (sbpokaz.getString("PokazStatus1", "").equals("0")) {
                             Intent i;
                             i = new Intent(getActivity(), PeredachaActivity.class);
                             startActivity(i);
-                        }else{
+                        } else {
                             Toast.makeText(getActivity(), "Показания счётчика уже добавлены", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(getActivity(), "Показания счётчика уже добавлены", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-        }else{
+        } else {
             peredacha.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -277,74 +252,19 @@ public class fragment_shet extends Fragment {
                 }
             });
         }
-        return v;
-    }
-    void establishConnection() {
-
-        billingClient.startConnection(new BillingClientStateListener() {
+        oplata.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    // The BillingClient is ready. You can query purchases here.
-                    showProducts();
+            public void onClick(View view) {
+                if (!money.getText().toString().equals("0.0 руб.")){
+                    Intent i;
+                    i = new Intent(getActivity(), Uspeh.class);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getActivity(), "Вы всё оплатили", Toast.LENGTH_SHORT).show();
                 }
-            }
 
-            @Override
-            public void onBillingServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-                establishConnection();
             }
         });
-    }
-    void showProducts() {
-        List<String> skuList = new ArrayList<>();
-        skuList.add("Schet");
-        SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-        params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
-        billingClient.querySkuDetailsAsync(params.build(),
-                new SkuDetailsResponseListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
-                                                     List<SkuDetails> skuDetailsList) {
-                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && skuDetailsList != null) {
-                            for (SkuDetails skuDetails : skuDetailsList) {
-                                    if (skuDetails.getSku().equals("Schet")) {
-                                        oplata.setOnClickListener(view -> {
-                                            launchPurchaseFlow(skuDetails);
-                                        });
-                                    }
-
-                            }
-                        }
-                    }
-                });
-    }
-    void launchPurchaseFlow(SkuDetails skuDetails) {
-
-        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                .setSkuDetails(skuDetails)
-                .build();
-
-        billingClient.launchBillingFlow(getActivity(), billingFlowParams);
-    }
-    void verifySubPurchase(Purchase purchases) {
-        ConsumeParams consumeParams =
-                ConsumeParams.newBuilder()
-                        .setPurchaseToken(purchases.getPurchaseToken())
-                        .build();
-
-        ConsumeResponseListener listener = new ConsumeResponseListener() {
-            @Override
-            public void onConsumeResponse(BillingResult billingResult, String purchaseToken) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    Toast.makeText(getActivity(), "Оплата прошла успешно", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-
-        billingClient.consumeAsync(consumeParams, listener);
+        return v;
     }
 }
