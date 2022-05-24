@@ -46,6 +46,7 @@ public class fragment_shet extends Fragment {
     private String schet1;
     private float cash1;
     private TextView money;
+    private TextView money1;
     private BillingClient billingClient;
     private ImageButton oplata;
     private ImageButton peredacha;
@@ -73,6 +74,7 @@ public class fragment_shet extends Fragment {
         Button adres1 = v.findViewById(R.id.adres1);
         Button adres2 = v.findViewById(R.id.adres2);
         money = v.findViewById(R.id.cash);
+        money1 = v.findViewById(R.id.cash1);
         ImageButton addAdres = v.findViewById(R.id.addAdres);
         oplata = v.findViewById(R.id.oplata);
         peredacha = v.findViewById(R.id.watermeter);
@@ -159,6 +161,7 @@ public class fragment_shet extends Fragment {
                         cash1 = user1.cash1;
                         adres1.setText(address);
                         money.setText(String.valueOf(cash) + " руб.");
+                        money1.setText(String.valueOf(cash1) + " руб.");
                         if (sbpokaz.contains("SchetStatus1")) {
                             adres2.setVisibility(View.VISIBLE);
                             if (adres2.getVisibility() == View.VISIBLE) {
@@ -198,7 +201,8 @@ public class fragment_shet extends Fragment {
                 editor.apply();
                 adres1.setBackgroundColor(getResources().getColor(R.color.grey));
                 adres2.setBackgroundColor(getResources().getColor(R.color.white));
-                money.setText(String.valueOf(cash1) + " руб.");
+                money1.setVisibility(View.VISIBLE);
+                money.setVisibility(View.INVISIBLE);
             }
         });
         adres1.setOnClickListener(new View.OnClickListener() {
@@ -208,18 +212,19 @@ public class fragment_shet extends Fragment {
                 editor.apply();
                 adres2.setBackgroundColor(getResources().getColor(R.color.grey));
                 adres1.setBackgroundColor(getResources().getColor(R.color.white));
-                money.setText(String.valueOf(cash) + " руб.");
+                money.setVisibility(View.VISIBLE);
+                money1.setVisibility(View.INVISIBLE);
             }
         });
         if (25 >= date1 && date1 >= 20) {
             peredacha.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (!sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash) + " руб.")) {
+                    if (!sbpokaz.contains("PokazStatus") && money.getVisibility()==View.VISIBLE) {
                         Intent i;
                         i = new Intent(getActivity(), PeredachaActivity.class);
                         startActivity(i);
-                    } else if (sbpokaz.contains("PokazStatus") && money.getText().toString().equals(String.valueOf(cash) + " руб.")) {
+                    } else if (sbpokaz.contains("PokazStatus") && money.getVisibility()==View.VISIBLE) {
                         if (sbpokaz.getString("PokazStatus", "").equals("0")) {
                             Intent i;
                             i = new Intent(getActivity(), PeredachaActivity.class);
@@ -227,11 +232,11 @@ public class fragment_shet extends Fragment {
                         } else {
                             Toast.makeText(getActivity(), "Показания счётчика уже добавлены", Toast.LENGTH_SHORT).show();
                         }
-                    } else if (!sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1) + " руб.")) {
+                    } else if (!sbpokaz.contains("PokazStatus1") && money1.getVisibility()==View.VISIBLE) {
                         Intent i;
                         i = new Intent(getActivity(), PeredachaActivity.class);
                         startActivity(i);
-                    } else if (sbpokaz.contains("PokazStatus1") && money.getText().toString().equals(String.valueOf(cash1) + " руб.")) {
+                    } else if (sbpokaz.contains("PokazStatus1") && money1.getVisibility()==View.VISIBLE) {
                         if (sbpokaz.getString("PokazStatus1", "").equals("0")) {
                             Intent i;
                             i = new Intent(getActivity(), PeredachaActivity.class);
@@ -255,7 +260,11 @@ public class fragment_shet extends Fragment {
         oplata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!money.getText().toString().equals("0.0 руб.")){
+                if (!money.getText().toString().equals("0.0 руб.") && money.getVisibility() == View.VISIBLE){
+                    Intent i;
+                    i = new Intent(getActivity(), Uspeh.class);
+                    startActivity(i);
+                }else if (!money1.getText().toString().equals("0.0 руб.") && money1.getVisibility() == View.VISIBLE){
                     Intent i;
                     i = new Intent(getActivity(), Uspeh.class);
                     startActivity(i);

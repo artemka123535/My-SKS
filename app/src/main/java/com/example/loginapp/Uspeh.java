@@ -3,7 +3,9 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +36,7 @@ public class Uspeh extends AppCompatActivity {
     private String id1;
     private TextView itogo;
     private TextView itog;
+    private SharedPreferences sbpokaz;
 
 
     @Override
@@ -46,6 +49,7 @@ public class Uspeh extends AppCompatActivity {
         mdt = FirebaseDatabase.getInstance().getReference();
         String email = mauth.getCurrentUser().getEmail();
         itogo = findViewById(R.id.itogo);
+        sbpokaz = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
         mdt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -55,7 +59,11 @@ public class Uspeh extends AppCompatActivity {
                     String email1 = user1.email;
                     if (email1.equals(email)) {
                         id1 = ds.getKey();
-                        itogo.setText(String.valueOf(user1.cash)+ " руб.");
+                        if(sbpokaz.getString("AddressStatus","").equals("1")){
+                            itogo.setText(String.valueOf(user1.cash)+ " руб.");
+                        }else{
+                            itogo.setText(String.valueOf(user1.cash1)+ " руб.");
+                        }
                     }
                 }
             }
@@ -87,8 +95,13 @@ public class Uspeh extends AppCompatActivity {
                     times = 2;
                     final DatabaseReference dbr = mdt.child(id1);
                     Map<String, Object> updates = new HashMap<>();
-                    updates.put("cash", 0);
-                    dbr.updateChildren(updates);
+                    if(sbpokaz.getString("AddressStatus","").equals("1")){
+                        updates.put("cash", 0);
+                        dbr.updateChildren(updates);
+                    }else{
+                        updates.put("cash1", 0);
+                        dbr.updateChildren(updates);
+                    }
                 }else if(times==2) {
                     Intent i;
                     i = new Intent(Uspeh.this, MenuActivity.class);

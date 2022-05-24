@@ -121,6 +121,8 @@ public class PersonalActivity extends AppCompatActivity {
                         String newpatronymic = patronymic.getText().toString();
                         String newbirth = birth.getText().toString();
                         Map<String, Object> updates = new HashMap<>();
+                        updates.put("name", name.getText().toString());
+                        updates.put("surname", surname.getText().toString());
                         updates.put("sex", newsex);
                         updates.put("patronymic", newpatronymic);
                         updates.put("birth", newbirth);
