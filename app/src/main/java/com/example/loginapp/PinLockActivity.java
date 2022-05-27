@@ -2,6 +2,7 @@ package com.example.loginapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,7 @@ public class PinLockActivity extends AppCompatActivity {
     private TextView codetext;
     private String newcode= "";
     private int count = 0;
+    private int proverka = 0;
     private SharedPreferences pin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,1037 @@ public class PinLockActivity extends AppCompatActivity {
                     }
                 }
                 if (codeexist1.equals("1")){
+                        if (pin.getString("ChangeStatus", "").equals("1")) {
+                            vyhod.setVisibility(View.INVISIBLE);
+                            if(pin.getString("ProverkaStatus", "").equals("0") || !pin.contains("ProverkaStatus")){
+                                codetext.setText("Введите код-пароль");
+                                button1.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "1";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "2";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button3.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "3";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button4.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "4";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button5.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "5";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button6.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "6";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button7.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "7";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button8.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "8";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button9.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "9";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                button0.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "0";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            if(code1.equals(newcode)){
+                                                editor.putString("ProverkaStatus", "1");
+                                                editor.apply();
+                                                Intent i;
+                                                i = new Intent(PinLockActivity.this,PinLockActivity.class);
+                                                startActivity(i);
+                                            }else{
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                Toast.makeText(PinLockActivity.this, "Код пароль не правильный", Toast.LENGTH_SHORT).show();
+                                                newcode = "";
+                                                count = 0;
+                                            }
+                                        }
+                                    }
+                                });
+                                back.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if (newcode.length() > 0 && count >=1) {
+                                            newcode = newcode.substring(0, newcode.length()-1);
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            }
+                                        }
+                                    }
+                                });
+                            }else{
+                                codetext.setText("Измените код-пароль");
+                                button1.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "1";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "2";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button3.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "3";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button4.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "4";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button5.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "5";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button6.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "6";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button7.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "7";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button8.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "8";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button9.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "9";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                button0.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        else if (newcode.length()<=4) {
+                                            count += 1;
+                                            newcode += "0";
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.pin);
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.pin);
+                                            }
+                                        }
+                                        if(newcode.length()==4) {
+                                            editor.putString("ChangeStatus", "0");
+                                            editor.apply();
+                                            editor.putString("ProverkaStatus", "0");
+                                            editor.apply();
+                                            final DatabaseReference dbr = mdt.child(id1);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("code", newcode);
+                                            dbr.updateChildren(updates);
+                                            Toast.makeText(PinLockActivity.this, "Код пароль изменён", Toast.LENGTH_SHORT).show();
+                                            Intent i;
+                                            i = new Intent(PinLockActivity.this,MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+                                back.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if (newcode.length() > 0 && count >=1) {
+                                            newcode = newcode.substring(0, newcode.length()-1);
+                                            if (count == 1) {
+                                                parol1.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 2) {
+                                                parol2.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 3) {
+                                                parol3.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            } else if (count == 4) {
+                                                parol4.setBackgroundResource(R.drawable.freepin);
+                                                count-=1;
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                    }else{
                     codetext.setText("Введите код-пароль");
-                    vyhod.setVisibility(View.VISIBLE);
                     button1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -658,15 +1689,18 @@ public class PinLockActivity extends AppCompatActivity {
                             i = new Intent(PinLockActivity.this,MainActivity.class);
                             startActivity(i);
                         }
-                    });
+                    });}
 
-                } else{
+                }else{
                     codetext.setText("Создайте код-пароль");
+                    vyhod.setVisibility(View.INVISIBLE);
                     button1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if(newcode.length()==4) {
                                 editor.putString("PinStatus", "0");
+                                editor.apply();
+                                editor.putString("ChangeStatus", "0");
                                 editor.apply();
                                 final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -694,6 +1728,8 @@ public class PinLockActivity extends AppCompatActivity {
                             if(newcode.length()==4) {
                                 editor.putString("PinStatus", "0");
                                 editor.apply();
+                                editor.putString("ChangeStatus", "0");
+                                editor.apply();
                                 final DatabaseReference dbr = mdt.child(id1);
                                 Map<String, Object> updates = new HashMap<>();
                                 updates.put("code", newcode);
@@ -711,6 +1747,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -738,6 +1776,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -755,6 +1795,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -782,6 +1824,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -800,6 +1844,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -827,6 +1873,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -845,6 +1893,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -872,6 +1922,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -890,6 +1942,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -917,6 +1971,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -935,6 +1991,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -962,6 +2020,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -980,6 +2040,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -1007,6 +2069,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -1025,6 +2089,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -1052,6 +2118,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
                                     editor.apply();
+                                    editor.putString("ChangeStatus", "0");
+                                    editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("code", newcode);
@@ -1070,6 +2138,8 @@ public class PinLockActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();
@@ -1096,6 +2166,8 @@ public class PinLockActivity extends AppCompatActivity {
                                 }
                                 if(newcode.length()==4) {
                                     editor.putString("PinStatus", "0");
+                                    editor.apply();
+                                    editor.putString("ChangeStatus", "0");
                                     editor.apply();
                                     final DatabaseReference dbr = mdt.child(id1);
                                     Map<String, Object> updates = new HashMap<>();

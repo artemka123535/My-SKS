@@ -3,9 +3,13 @@ package com.example.loginapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -21,6 +25,7 @@ public class SecurityActivity extends AppCompatActivity {
     private FirebaseAuth mauth;
     private String id1;
     private String codeexist1;
+    private SharedPreferences change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,8 @@ public class SecurityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_security);
         getSupportActionBar().setTitle("Безопасность");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        change = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = change.edit();
         mauth = FirebaseAuth.getInstance();
         mdt = FirebaseDatabase.getInstance().getReference();
         String email = mauth.getCurrentUser().getEmail();
@@ -47,6 +54,18 @@ public class SecurityActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editor.putString("ChangeStatus", "1");
+                editor.apply();
+                Intent i;
+                i = new Intent(SecurityActivity.this, PinLockActivity.class);
+                startActivity(i);
 
             }
         });
